@@ -1,0 +1,45 @@
+{% extends 'layouts/users.twig' %}
+
+{% block title %} Index {% endblock %}
+
+{% block header %} 
+
+    <h1>Lista de usuarios</h1>
+
+{% endblock %}
+
+{% block content %}
+
+    {{ parent () }}
+    <a class="btn btn-primary" href="http://localhost/proyectos/2DAW%20-%20DWES%20-%20PHP/09%20-%20controladores/?controller=users&action=create">Agregar usuario</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.nombre }}</td>
+                <td>{{ u.apellidos }}</td>
+                <td>{{ u.email }}</td>
+                <td>{{ u.fecha }}</td>
+                <td>
+                    <a class="btn btn-success" href="http://localhost/proyectos/2DAW%20-%20DWES%20-%20PHP/09%20-%20controladores/?controller=users&action=show&id={{ u.id }}">Ver</a>
+                    <a class="btn btn-secondary" href="http://localhost/proyectos/2DAW%20-%20DWES%20-%20PHP/09%20-%20controladores/?controller=users&action=edit&id={{ u.id }}">Editar</a>
+                    <a class="btn btn-danger" href="http://localhost/proyectos/2DAW%20-%20DWES%20-%20PHP/09%20-%20controladores/?controller=users&action=delete&id={{ u.id }}">Eliminar</a>
+                </td>
+            </tr>
+        {% else %}
+            <li><em>No se encuentran usuarios</em></li>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

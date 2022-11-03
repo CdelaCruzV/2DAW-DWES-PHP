@@ -1,0 +1,42 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="../../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Usuarios</title>
+</head>
+<body>
+
+     <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.nombre }}</td>
+                <td>{{ u.apellidos }}</td>
+                <td>{{ u.email }}</td>
+                <td>{{ u.fecha }}</td>
+                <td>
+                    <a class="btn btn-secondary">Editar</a>
+                    <a class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        {% else %}
+            <li><em>No se encuentran usuarios</em></li>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

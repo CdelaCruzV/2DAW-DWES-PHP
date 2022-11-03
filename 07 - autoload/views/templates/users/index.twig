@@ -1,0 +1,43 @@
+{% extends 'layouts/users.twig' %}
+
+{% block title %} Index {% endblock %}
+
+{% block header %} 
+
+    <h1>Lista de usuarios</h1>
+
+{% endblock %}
+
+{% block content %}
+
+    {{ parent () }}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.nombre }}</td>
+                <td>{{ u.apellidos }}</td>
+                <td>{{ u.email }}</td>
+                <td>{{ u.fecha }}</td>
+                <td>
+                    <a class="btn btn-secondary">Editar</a>
+                    <a class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        {% else %}
+            <li><em>No se encuentran usuarios</em></li>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
